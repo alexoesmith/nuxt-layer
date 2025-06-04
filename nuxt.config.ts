@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@storyblok/nuxt",
     "@pinia/nuxt",
-    "@vueuse/nuxt",
     "pinia-plugin-persistedstate/nuxt",
   ],
 
