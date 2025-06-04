@@ -5,6 +5,8 @@ defineProps({
     required: true,
   },
 });
+
+const { toggleCompare, isItemInCompare } = useCompareStore();
 </script>
 
 <template>
@@ -16,17 +18,24 @@ defineProps({
       <NuxtImg
         :src="blok.image?.filename"
         alt="Feature Image"
+        provider="storyblok"
+        format="webp"
         sizes="lg:500px 100vw"
         class="object-cover w-full h-full"
       />
     </div>
-    <div class="p-6">
+
+    <div class="p-6 space-y-5">
       <h1 class="text-xl font-bold">
         {{ blok.headline }}
       </h1>
-      <p class="text-sm/6 mt-6">
+      <p class="text-sm/6">
         {{ blok.description }}
       </p>
+      <p class="font-bold">
+        {{ isItemInCompare(blok._uid) ? "In Compare" : "Not in Compare" }}
+      </p>
+      <CompareButton @click="toggleCompare(blok._uid)" />
     </div>
   </div>
 </template>
